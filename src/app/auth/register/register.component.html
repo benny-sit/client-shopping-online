@@ -1,0 +1,106 @@
+<app-auth-layout>
+    <div class="register-container">
+        <div class="auth-title">REGISTER</div>
+        <mat-stepper linear #stepper class="register-stepper">
+            <mat-step [stepControl]="form" [editable]="!(isSubmitting$ | async)" >
+                <form [formGroup]="form" class="form-wrapper">
+                    <ng-template matStepLabel>Register</ng-template>
+                    <fieldset class="two__inputs">
+                        <input 
+                            type="text"
+                            class="form-input"
+                            placeholder="First Name"
+                            formControlName="firstName"
+                        />
+                        <input 
+                            type="text"
+                            class="form-input"
+                            placeholder="Last Name"
+                            formControlName="lastName"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <input 
+                            type="text"
+                            class="form-input"
+                            placeholder="Username"
+                            formControlName="username"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <input 
+                            type="email"
+                            class="form-input"
+                            placeholder="Email"
+                            formControlName="email"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <input 
+                            type="password"
+                            class="form-input"
+                            placeholder="Password"
+                            formControlName="password"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <input 
+                            type="password"
+                            class="form-input"
+                            placeholder="Confirm Password"
+                            formControlName="confirmPassword"
+                        />
+                    </fieldset>
+                    <div class="flex-end">
+                        <button matStepperNext class="btn-submit">CONTINUE</button>
+                    </div>
+                    <a class="auth-link" routerLink="/login">Already Have an Account?</a>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="formAdditional" [editable]="!(isSubmitting$ | async)">
+                <form [formGroup]="formAdditional" class="form-wrapper">
+                    <ng-template matStepLabel>Additional Info</ng-template>
+                    <fieldset>
+                        <input 
+                            type="text"
+                            class="form-input"
+                            placeholder="ID"
+                            formControlName="IdNumber"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <input 
+                            type="text"
+                            class="form-input"
+                            placeholder="City"
+                            formControlName="city"
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <input 
+                            type="text"
+                            class="form-input"
+                            placeholder="Street"
+                            formControlName="street"
+                        />
+                    </fieldset>
+                    <div class="flex-end">
+                        <button matStepperNext class="btn-submit" (click)="register()" [disabled]="isSubmitting$ | async">REGISTER</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step >
+                <ng-template matStepLabel>Done</ng-template>
+                <div *ngIf="!(isSubmitting$ | async); else spinner" class="error-message">
+                    {{(error$ | async)}}
+                </div>
+                <ng-template #spinner>
+                    <div class="spinner-wrapper">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                </ng-template>
+                <button mat-button matStepperPrevious class="btn-submit">Back</button>
+            </mat-step>
+        </mat-stepper>
+    </div>
+</app-auth-layout>

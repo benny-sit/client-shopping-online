@@ -1,0 +1,15 @@
+<img [src]="itemDetails?.imgUrl" class="item-img"/>
+
+<div class="item-body">
+    <div class="item-title">
+        {{itemDetails?.title}}
+    </div>
+    <div class="item-subtitle">
+        {{itemDetails?.size}} | {{itemDetails?.manufacturer}}
+    </div>
+    <div class="item-price">
+        <span class="price-symbol">₪</span>{{itemDetails?.price}}
+    </div>
+</div>
+
+<button class="item-add" tabindex="0" (click)="itemClicked()">+</button>

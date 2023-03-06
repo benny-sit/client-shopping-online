@@ -1,0 +1,32 @@
+<app-auth-layout>
+    <div class="container-login">
+        <div class="auth-title">
+            LOGIN
+        </div>
+        <div class="error-message" *ngIf="error$ | async as error">{{error.message}}</div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-wrapper">
+            <fieldset>
+                <input 
+                    type="text"
+                    class="form-input"
+                    placeholder="Username"
+                    formControlName="username"
+                />
+            </fieldset>
+            <fieldset>
+                <input 
+                    type="password"
+                    class="form-input"
+                    placeholder="Password"
+                    formControlName="password"
+                />
+            </fieldset>
+            <a class="auth-link" routerLink="/register">Don't Have an Account?</a>
+            <a class="auth-link" routerLink="/login">Forgot your Password?</a>
+            <div class="flex-end">
+                <button type="submit" class="btn-submit" [disabled]="isSubmitting$ | async">SIGN IN</button>
+            </div>
+        </form>
+
+    </div>
+</app-auth-layout>

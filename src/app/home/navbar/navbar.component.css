@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
+    position: relative;
+    contain: layout;
+}
+
+.nav-logo {
+    max-width: 60px;
+}
+
+.nav-user {
+    display: flex;
+    position: relative;
+    gap: 1em;
+    font-weight: 300;
+    font-size: larger;
+    align-items: center;
+}
+
+.nav-img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 335px;
+    right: -170px;
+}

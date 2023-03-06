@@ -1,0 +1,12 @@
+<div class="rect-bg"></div>
+<div class="cart-bg"></div>
+
+<div class="categories">
+    <div class="categories-inner">
+        <button *ngFor="let c of categories; let i = index;" class="btn-category" (click)="categoryClicked(i)">{{c.name}}</button>
+    </div>
+</div>
+
+<div class="grid-items">
+    <app-item *ngFor="let item of items" [itemDetails]="item"></app-item>
+</div>

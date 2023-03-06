@@ -1,0 +1,23 @@
+.container {
+    max-width: 1536px;
+    max-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1em;
+    isolation: isolate;
+}
+
+.grid-main {
+    display: grid;
+    grid-template-columns: minmax(300px, 350px) minmax(570px, 1fr);
+    gap: 1em;
+    grid-template-rows: 60px auto;
+    /* grid-auto-rows: max-content; */
+    height: 90%;
+}
+
+
+.search-bar {
+    grid-column: 2 / span 1;
+}

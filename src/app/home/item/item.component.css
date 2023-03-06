@@ -1,0 +1,89 @@
+:host(.item) {
+    max-width: 235px;
+    width: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    /* border-right: 40px solid var(--sky-800); */
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+
+    
+}
+
+:host(.item::before) {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--sky-800);
+    transform-origin: center right;
+    transition: transform 500ms ease-out;
+}
+
+:host(.item:is(:hover, :focus-visible) > .item-body) {
+    transform: translateX(-1em);
+}
+
+:host(.item:is(:hover, :focus-visible)::before) {
+    transform: scaleX(10);
+}
+
+:host(.item:is(:hover, :focus-visible) > .item-add) {
+    opacity: 1;
+    transition: opacity 200ms linear 500ms;
+}
+
+.item-img {
+    width: 180px;
+    aspect-ratio: 1;
+    margin: 0 auto;
+    position: relative;
+}
+
+.item-body {
+    margin: 0 0 1em 1.5em;
+    transition: transform 500ms ease;
+}
+
+.item-title {
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    color: var(--gray-900);
+}
+
+.item-subtitle {
+    color: var(--gray-400);
+    font-size: 12px;
+    line-height: 1;
+    margin-block: 0.25em;
+}
+
+.item-price {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--gray-800);
+    font-size: small
+
+}
+
+.item-price > .price-symbol {
+    color: var(--gray-500);
+    font-size: xx-small;
+}
+
+.item-add {
+    position: absolute;
+    right: 0.25em;
+    bottom: 0.25em;
+    outline: none;
+    border: none;
+    font-size: 25px;
+    font-weight: 200;
+    padding: 0 0.25em;
+    opacity: 0;
+    transition: opacity 300ms linear;
+    background: #fff;
+    cursor: pointer;
+}   

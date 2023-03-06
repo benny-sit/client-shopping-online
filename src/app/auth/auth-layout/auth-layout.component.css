@@ -1,0 +1,57 @@
+:host(.wrapper) {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.auth-form {
+    max-width: 620px;
+    max-height: 650px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: var(--sky-100);
+}
+
+.auth-form::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    transform-origin: right center;
+    background-image: url('/assets/auth/stripes.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: calc((255/620) * 100%);
+    aspect-ratio: 255 / 238;
+    top: 50%;
+    transform: translate(-95%, -50%) rotate(-16deg);
+}
+
+.auth-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120%);
+    width: calc((10 / 62) * 100%);
+    max-width: 100px;
+}
+
+.bg-top {
+    position: absolute;
+    width: calc((578/1920) * 100%);
+    min-width: 400px;
+    top: 7%;
+    left: 2%;
+    transform: rotate(-7deg);
+}
+
+.bg-bottom {
+    position: absolute;
+    width: calc((840/1920) * 100%);
+    min-width: 600px;
+    bottom: 10%;
+    right: 0%;
+    transform: rotate(-32.5deg);
+    overflow: hidden;
+}

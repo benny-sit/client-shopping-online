@@ -1,0 +1,30 @@
+.register-container {
+    height: 100%;
+    font-family: 'Nunito', sans-serif;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-container > .auth-title {
+    margin: 0;
+}
+
+.register-stepper {
+    background-color: inherit;
+}
+
+.register-container .form-wrapper {
+    margin-inline: auto;
+}
+
+.two__inputs {
+    display: flex;
+    gap: 1em;
+}
+
+.spinner-wrapper {
+    margin-inline: auto;
+    max-width: 60px;
+    margin-top: 3em;
+}
