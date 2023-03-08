@@ -5,6 +5,8 @@
     isolation: isolate;
     min-height: 440px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .categories {
@@ -51,6 +53,11 @@
     font-size: 20px;
     width: max-content;
     color: var(--gray-600);
+    cursor: pointer;
+}
+
+.btn-category.selected {
+    background-color: var(--sky-50);
 }
 
 .grid-items {

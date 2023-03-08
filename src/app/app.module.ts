@@ -17,6 +17,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { ApiService } from './home/services/api-service.service';
+import { apiReducer } from './home/store/reducers';
+import { ApiEffect } from './home/store/effects';
+import { PaginationComponent } from './home/pagination/pagination.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -27,17 +31,19 @@ import { ApiService } from './home/services/api-service.service';
     UserCartComponent,
     ItemsComponent,
     ItemComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     AuthModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({api: apiReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     HttpClientModule,
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ApiEffect]),
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@
     <div class="cart-title">
         CART
     </div>
-    <button class="cart-clear">
+    <button class="cart-clear" (click)="clearCart()">
         Clear
     </button>
 </div>
@@ -10,6 +10,16 @@
 <div class="divider"></div>
 
 <ul class="cart-items">
+    <li class="cart-item" *ngFor="let c of cartItems$ | async as cartItems ">
+        <span>{{c.item.title}}</span>
+        <button (click)="incCartItem(c.item)">
+            <mat-icon aria-hidden="false" aria-label="change quantity" fontIcon="add">plus</mat-icon>
+        </button>
+        <input type="number" #quantity [value]="c.quantity" (input)="changeCartItem(c.item, $event)" min="0"/>
+        <button (click)="decCartItem(c.item)">
+            <mat-icon aria-hidden="false" aria-label="change quantity" fontIcon="horizontal_rule">minus</mat-icon>
+        </button>
+    </li>
 </ul>
 
 <div class="cart-order">
@@ -18,10 +28,10 @@
     </div>
     <div class="divider"></div>
     <div class="cart-details">
-        <div class="cart-detail"><span>Items Price</span><span>200$</span></div>
+        <div class="cart-detail"><span>Items Price</span><span>{{cartPrice$ | async}}$</span></div>
         <div class="cart-detail"><span>Delivery Cost</span><span>0$</span></div>
         <div class="mini-divider"></div>
-        <div class="cart-total">200$</div>
+        <div class="cart-total">{{cartPrice$ | async}}$</div>
     </div>
     <div class="cart-order-bottom">
         <button class="btn-order">

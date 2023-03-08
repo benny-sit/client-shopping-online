@@ -3,10 +3,12 @@
 
 <div class="categories">
     <div class="categories-inner">
-        <button *ngFor="let c of categories; let i = index;" class="btn-category" (click)="categoryClicked(i)">{{c.name}}</button>
+        <button *ngFor="let c of categories$ | async as categories; let i = index;" class="btn-category" [class.selected]="c._id == selectedCategory._id" (click)="categoryClicked(c)">{{c.name}}</button>
     </div>
 </div>
 
 <div class="grid-items">
-    <app-item *ngFor="let item of items" [itemDetails]="item"></app-item>
+    <app-item *ngFor="let item of items$ | async as items " [itemDetails]="item"></app-item>
 </div>
+
+<app-pagination></app-pagination>
