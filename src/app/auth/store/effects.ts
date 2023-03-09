@@ -4,7 +4,7 @@ import { of} from 'rxjs'
 
 import { AuthService } from "../auth-service.service";
 import { CurrentUserInterface } from "../types.interface";
-import { loginAction, loginFailureAction, loginSuccessAction, registerAction } from "./actions";
+import { loginAction, loginFailureAction, loginSuccessAction, refreshAction, registerAction } from "./actions";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
@@ -44,7 +44,24 @@ export class AuthEffect {
                 )
             })
         )
-    ) 
+    )
+
+    refresh$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(refreshAction),
+            switchMap(() => {
+                return this.authService.refresh().pipe(
+                    map((currentUser: CurrentUserInterface) => { 
+                        if(currentUser) window.localStorage.setItem('accessToken', currentUser.token);
+                        return loginSuccessAction({currentUser}) 
+                    }),
+                    catchError((errorResponse: HttpErrorResponse) => {
+                        return of(loginFailureAction(errorResponse.error))
+                    })
+                )
+            })
+        )
+    )
 
     redirectAfterSubmit$ = createEffect(() => 
         this.actions$.pipe(

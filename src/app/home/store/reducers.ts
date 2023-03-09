@@ -1,7 +1,7 @@
 import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store";
 import { ApiStateInterface, cartItemInterface } from "../types.interface";
-import { changeCartItemAction, clearCartAction, decCartItemAction, fetchFailureAction, incCartItemAction, loadCartItemsAction, loadCartItemsSuccessAction, loadCartPriceAction, loadCartPriceSuccessAction, loadCategoriesAction, loadCategoriesSuccessAction, loadItemsAction, loadItemsSuccessAction, selectedCategoryAction, setPageAction, setSearchAction } from "./actions";
+import { changeCartItemAction, clearCartAction, createItemAction, createOrderAction, decCartItemAction, deleteItemAction, fetchFailureAction, incCartItemAction, loadCartItemsAction, loadCartItemsSuccessAction, loadCartPriceAction, loadCartPriceSuccessAction, loadCategoriesAction, loadCategoriesSuccessAction, loadItemsAction, loadItemsSuccessAction, selectedCategoryAction, setEditItemAction, setPageAction, setSearchAction, updateItemAction } from "./actions";
 
 
 
@@ -14,6 +14,7 @@ const initialState: ApiStateInterface = {
     search: '',
     isFetching: false,
     cartPrice: 0,
+    editItem: null,
 }
 
 
@@ -65,7 +66,7 @@ export const apiReducer = createReducer(
     on(
         loadCartItemsSuccessAction,
         (state, action): ApiStateInterface => ({
-            ...state, cartItems: action.cartItems
+            ...state, cartItems: action.cartItems, isFetching: false
         })
     ),
     on(
@@ -150,6 +151,38 @@ export const apiReducer = createReducer(
         loadItemsSuccessAction,
         (state, action): ApiStateInterface => {
             return {...state, isFetching: false, items: action.items}
+        }
+    ),
+    // Items | Admin 
+    on(
+        createItemAction,
+        (state, action): ApiStateInterface => {
+            return {...state, isFetching: true, editItem: null}
+        }
+    ),
+    on(
+        updateItemAction,
+        (state, action): ApiStateInterface => {
+            return {...state, isFetching: true, editItem: null}
+        }
+    ),
+    on(
+        deleteItemAction,
+        (state): ApiStateInterface => {
+            return {...state, isFetching: true}
+        }
+    ),
+    on(
+        setEditItemAction,
+        (state, action): ApiStateInterface => {
+            return {...state, editItem: action.item}
+        }
+    ),
+    // Orders
+    on(
+        createOrderAction,
+        (state, action): ApiStateInterface => {
+            return {...state, isFetching: true}
         }
     )
 )

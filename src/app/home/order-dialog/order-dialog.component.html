@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Place Order</h1>
+<div mat-dialog-content>
+    <p>Provide Shipping Date</p>
+    <input type="date" class="form-input" placeholder="Shipping Date" />
+    <p>Please Provide Credit Card Number</p>
+  <input minlength="4" type="text" class="form-input" placeholder="Credit Card Number" (input)="onCreditChange(credit.value)" #credit required/>
+</div>
+<div mat-dialog-actions>
+  <button class="btn-close" (click)="onNoClick()" >Close</button>
+  <button class="btn-submit" [mat-dialog-close]="creditCard" cdkFocusInitial>Order</button>
+</div>

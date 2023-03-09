@@ -1,0 +1,59 @@
+[mat-dialog-content] > p {
+    margin-block: .5em;
+}
+
+.form-input {
+    font-size: 1rem;
+    padding: 0.4em 0.6em;
+    font-family: 'Nunito', sans-serif;
+    border-radius: 0;
+    outline:1px solid #fff;
+    border: none;
+    transition: outline 500ms linear;
+    width: 100%;
+    margin-inline: auto;
+    background-color: var(--gray-50);
+    /* margin-top: .7em; */
+}
+
+.form-input:focus {
+    outline: 1px solid var(--sky-500);
+    outline-offset: 5px;
+}
+
+/* .form-input:first-child {
+    margin-top: 0;
+} */
+
+.btn-submit {
+    border: none;
+    padding: 0.4em 1.25em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    background-color: var(--sky-600);
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-submit:focus { background-color: var(--sky-700);}
+
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-close {
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0.5em 1.25em;
+    margin-right: .5em;
+}
+
+.btn-close:hover {
+    background-color: var(--gray-50);
+}

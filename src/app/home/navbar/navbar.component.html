@@ -3,8 +3,8 @@
     <img src="assets/blueCart.png" class="nav-logo"/>
     <img class="nav-img" src="assets/elipse.png" />
     <div class="nav-user">
-        <div >
-            John Doe
+        <div *ngIf="currentUser$ | async as currentUser">
+            {{currentUser.username}}
         </div>
         <mat-icon  aria-hidden="false" aria-label="account box icon" fontIcon="account_box">account</mat-icon>
     </div>

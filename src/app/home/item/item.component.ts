@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { currentUserSelector } from 'src/app/auth/store/selectors';
+import { CurrentUserInterface } from 'src/app/auth/types.interface';
 import { AppStateInterface } from 'src/app/shared/types.interface';
-import { incCartItemAction } from '../store/actions';
+import { deleteItemAction, incCartItemAction, setEditItemAction } from '../store/actions';
 import { storeItemInterface } from '../types.interface';
 
 @Component({
@@ -13,6 +16,7 @@ import { storeItemInterface } from '../types.interface';
 export class ItemComponent implements OnInit{
   @Input() itemDetails!: storeItemInterface;
 
+  currentUser$: Observable<CurrentUserInterface | null> = this.store.pipe(select(currentUserSelector))
 
   constructor(private store: Store<AppStateInterface>) {}
 
@@ -27,4 +31,13 @@ export class ItemComponent implements OnInit{
   addItemToCart(item: storeItemInterface): void {
     this.store.dispatch(incCartItemAction({item}));
   }
+
+  editItem(item: storeItemInterface): void {
+    this.store.dispatch(setEditItemAction({item}));
+  }
+
+  removeItem(itemId: string ): void {
+    this.store.dispatch(deleteItemAction({itemId}));
+  }
+
 }

@@ -12,4 +12,9 @@
     </div>
 </div>
 
-<button class="item-add" tabindex="0" (click)="addItemToCart(itemDetails)">+</button>
+<button *ngIf="!(currentUser$ | async)?.isAdmin" class="item-action" tabindex="0" (click)="addItemToCart(itemDetails)">+</button>
+
+<ng-container *ngIf="(currentUser$ | async)?.isAdmin">
+    <button class="item-action" tabindex="0" (click)="editItem(itemDetails)">+</button>
+    <button class="item-action remove" tabindex="0" (click)="removeItem(itemDetails._id)">-</button>
+</ng-container>

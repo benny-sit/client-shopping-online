@@ -88,3 +88,32 @@ export const loadItemsSuccessAction = createAction(
     '[Home] loadItemsSuccess',
     props<{items: storeItemInterface[]}>()
 )
+
+// Items | ADMIN
+
+export const createItemAction = createAction(
+    '[Home] createItem',
+    props<{item: storeItemInterface}>()
+)
+
+export const updateItemAction = createAction(
+    '[Home] updateItem',
+    props<{item: storeItemInterface}>()
+)
+
+export const deleteItemAction = createAction(
+    '[Home] deleteItem',
+    props<{itemId: string}>()
+)
+
+export const setEditItemAction = createAction(
+    '[Home] setEditItem',
+    props<{item: storeItemInterface | null}>()
+)
+
+// Orders 
+
+export const createOrderAction = createAction(
+    '[Home] createOrder',
+    props<{last4digits: string}>()
+)

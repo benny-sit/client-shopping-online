@@ -75,4 +75,44 @@ export class ApiService {
     return this.http.delete<{cartItems: cartItemInterface[]}>(url, {headers: headers});
   }
 
+  createOrder(last4digits: string): Observable<any> {
+    const url = BASE_URL + 'order';
+    const headers = this.getHeaders();
+
+    last4digits = last4digits.slice(-4);
+
+    return this.http.post<any>(url, {last4digits} ,{headers: headers});
+  }
+
+  // Admin
+
+  createItem(item: storeItemInterface): Observable<any> {
+    const url = BASE_URL + 'item';
+    const headers = this.getHeaders();
+    const {_id,  ...newItem} = item;
+    console.log(item)
+
+    return this.http.post<any>(url, {...newItem}, {headers: headers});
+  }
+
+  updateItem(item: storeItemInterface): Observable<any> {
+    const url = BASE_URL + 'item';
+    const headers = this.getHeaders();
+
+
+    return this.http.put<any>(url, {...item}, {headers: headers});
+  }
+
+  deleteItem(itemId: string): Observable<any> {
+    const url = BASE_URL + 'item';
+    const headers = this.getHeaders();
+
+    return this.http.delete<any>(url, {
+      headers,
+      body: {
+        "_id": itemId,
+      },
+    });
+  }
+
 }

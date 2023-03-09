@@ -1,7 +1,7 @@
 import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store";
 import { AuthStateInterface } from "../types.interface";
-import { loginAction, loginFailureAction, loginSuccessAction, registerAction } from "./actions";
+import { loginAction, loginFailureAction, loginSuccessAction, refreshAction, registerAction } from "./actions";
 
 
 const initialState: AuthStateInterface = {
@@ -42,6 +42,13 @@ const authReducer = createReducer(
             CurrentUser: null,
             error: action.error,
             isSubmitting: false,
+        })
+    ),
+    on(
+        refreshAction,
+        (state) => ({
+            ...state,
+            isSubmitting: true
         })
     )
 )

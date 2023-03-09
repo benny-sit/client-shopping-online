@@ -21,6 +21,10 @@ import { apiReducer } from './home/store/reducers';
 import { ApiEffect } from './home/store/effects';
 import { PaginationComponent } from './home/pagination/pagination.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrderDialogComponent } from './home/order-dialog/order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ItemsComponent,
     ItemComponent,
     PaginationComponent,
+    OrderDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     AuthModule,
     StoreModule.forRoot({api: apiReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

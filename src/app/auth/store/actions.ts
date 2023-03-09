@@ -30,3 +30,8 @@ export const registerFailureAction = createAction(
     `[Auth] registerFailure`,
     props<{error: {message: string}}>()
 )
+
+export const refreshAction = createAction(
+    '[Auth] refresh',
+    props<any>()
+)

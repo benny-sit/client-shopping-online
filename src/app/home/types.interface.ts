@@ -13,6 +13,7 @@ export interface storeItemInterface {
     size: string;
     price: number;
     imgUrl: string;
+    category: string;
 }
 
 
@@ -30,4 +31,5 @@ export interface ApiStateInterface {
     search: string;
     isFetching: boolean;
     cartPrice: number;
+    editItem: storeItemInterface | null;
 }

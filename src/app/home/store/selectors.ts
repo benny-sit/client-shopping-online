@@ -44,3 +44,8 @@ export const selectPage = createSelector(
     selectApiData,
     (state: ApiStateInterface) => state.page
 )
+
+export const selectEditItem = createSelector(
+    selectApiData,
+    (state: ApiStateInterface) => state.editItem
+)

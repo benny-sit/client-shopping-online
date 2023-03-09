@@ -30,7 +30,7 @@
     transform: scaleX(10);
 }
 
-:host(.item:is(:hover, :focus-visible) > .item-add) {
+:host(.item:is(:hover, :focus-visible) > .item-action) {
     opacity: 1;
     transition: opacity 200ms linear 500ms;
 }
@@ -73,7 +73,7 @@
     font-size: xx-small;
 }
 
-.item-add {
+.item-action {
     position: absolute;
     right: 0.25em;
     bottom: 0.25em;
@@ -86,4 +86,10 @@
     transition: opacity 300ms linear;
     background: #fff;
     cursor: pointer;
-}   
+}
+
+.item-action.remove {
+    bottom: 1.6em;
+    padding: 0 .38em;
+    background-color: red;
+}
